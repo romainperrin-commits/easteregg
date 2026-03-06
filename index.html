@@ -1104,18 +1104,6 @@ function gameLoop() {
   drawTransformEffect();
   updateDrawBonusParticles();
 
-  // Draw `logo-atome3d.svg` at the bottom of the game canvas.
-  // When the UI enters game-over mode the logo is drawn smaller.
-  if (typeof logoAtomeImg !== 'undefined' && logoAtomeImg.complete) {
-    const isGameOverMode = uiDiv && uiDiv.classList && uiDiv.classList.contains('game-over-mode');
-    const maxLogoW = Math.min(W * 0.28, 220);
-    const logoW = isGameOverMode ? Math.min(maxLogoW * 0.5, 110) : maxLogoW;
-    const logoH = Math.max(1, logoW * logoAtomeAspect);
-    const logoX = (W - logoW) / 2;
-    const logoY = H - logoH - 30; // 30px bottom margin
-    ctx.drawImage(logoAtomeImg, logoX, logoY, logoW, logoH);
-  }
-
 
   if (flashTimer > 0) {
     ctx.fillStyle = `rgba(255,209,102,${(flashTimer/20)*0.1})`;
